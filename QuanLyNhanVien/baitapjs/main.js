@@ -174,6 +174,7 @@ document.getElementById("searchName").addEventListener("keyup", (search) => {
       : (row.style.display = "none");
   });
 });
+
 // *Button đóng
 document.getElementById("btnDong").addEventListener("click", () => {
   document.getElementById("btnThemNV").style.display = "block";
