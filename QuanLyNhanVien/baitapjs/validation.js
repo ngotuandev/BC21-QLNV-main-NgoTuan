@@ -1,4 +1,4 @@
-export let validatorNV = {
+let validatorNV = {
   kiemTraRong: (string, idErr, message) => {
     let value = string.trim();
 

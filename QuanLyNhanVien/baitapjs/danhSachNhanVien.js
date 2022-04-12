@@ -1,4 +1,4 @@
-export class NhanVien {
+class NhanVien {
   constructor(tkNV, tenNV, emailNV, mkNV, ngayNV, luongNV, chucVuNV, gioLamNV) {
     this.taiKhoan = tkNV;
     this.ten = tenNV;
@@ -10,7 +10,7 @@ export class NhanVien {
     this.gioLam = gioLamNV;
   }
 }
-export let thongTinNhanVien = () => {
+let thongTinNhanVien = () => {
   let taiKhoanE = document.getElementById("tknv").value;
   let tenE = document.getElementById("name").value;
   let emailE = document.getElementById("email").value;
@@ -32,7 +32,7 @@ export let thongTinNhanVien = () => {
   return nhanVienTuForm;
 };
 
-export let renderDanhSachNhanVien = (danhSachNhanVien) => {
+let renderDanhSachNhanVien = (danhSachNhanVien) => {
   let dsnvHTML = "";
   for (let index of danhSachNhanVien) {
     let nhanVienHienTai = index;
@@ -50,12 +50,12 @@ export let renderDanhSachNhanVien = (danhSachNhanVien) => {
     };
     let xepLoaiNV = () => {
       if (nhanVienHienTai.gioLam >= 192) {
-        return (xepLoai = "Nhân viên xuất sắc");
+        return (xepLoai = "Xuất sắc");
       } else if (nhanVienHienTai.gioLam >= 176) {
-        return (xepLoai = "Nhân viên giỏi");
+        return (xepLoai = "Giỏi");
       } else if (nhanVienHienTai.gioLam >= 160) {
-        return (xepLoai = "Nhân viên khá");
-      } else return (xepLoai = "Nhân viên trung bình");
+        return (xepLoai = "Khá");
+      } else return (xepLoai = "Trung bình");
     };
     let chucVuNV = () => {
       if (nhanVienHienTai.chucVu == 1) {
@@ -73,13 +73,9 @@ export let renderDanhSachNhanVien = (danhSachNhanVien) => {
     <td>${nhanVienHienTai.ngayLam}</td>
     <td>${chucVuNV(danhSachNhanVien)}</td>
     <td>${tongLuongNV(danhSachNhanVien)}</td>
-    <td>${xepLoaiNV(danhSachNhanVien)}</td>
-    <td class="d-flex"> <button class="btn btn-success mr-1" onclick="suaNhanVien${
-      nhanVienHienTai.taiKhoan
-    }">Sửa</button>
-                          <button class="btn btn-danger" onclick="xoaNhanVien${
-                            nhanVienHienTai.taiKhoan
-                          }">Xóa</button> </td>
+    <td id="xepLoaiNV">${xepLoaiNV(danhSachNhanVien)}</td>
+    <td class="d-flex"> <button class="btn btn-success mr-1 suaButton" id="suaNhanVien" data-toggle="modal" data-target="#myModal">Sửa</button>
+                          <button class="btn btn-danger xoaButton" id="xoaNhanVien">Xóa</button> </td>
     
     
     </tr>`;
@@ -88,15 +84,7 @@ export let renderDanhSachNhanVien = (danhSachNhanVien) => {
   document.getElementById("tableDanhSach").innerHTML = dsnvHTML;
 };
 
-export let TimNhanVien = (taiKhoan) => {
-  for (let index of danhSachNhanVien) {
-    if (index.taiKhoan === taiKhoan) {
-      return index;
-    }
-  }
-};
-
-export let setLocalNhanVien = (array) => {
+let setLocalNhanVien = (array) => {
   let json = JSON.stringify(array);
   localStorage.setItem("nhanVienLocal", json);
 };
