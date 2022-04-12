@@ -1,11 +1,22 @@
+import {
+  NhanVien,
+  thongTinNhanVien,
+  renderDanhSachNhanVien,
+  setLocalNhanVien,
+} from "./danhSachNhanVien.js";
+import { validatorNV } from "./validation.js";
+
 let danhSachNhanVien = [];
 const nhanVienLocal = "nhanVienLocal";
 
+// *Local
 let json = localStorage.getItem(nhanVienLocal);
 if (json) {
   danhSachNhanVien = JSON.parse(json);
   renderDanhSachNhanVien(danhSachNhanVien);
 }
+
+// *Thêm nhân viên
 let btnThem = document
   .getElementById("btnThemNV")
   .addEventListener("click", () => {
@@ -60,7 +71,6 @@ let btnThem = document
       document.getElementById("chucvu").selectedIndex = 0;
     }
   });
-console.log(danhSachNhanVien);
 
 // *Xóa nhân viên theo dòng mỗi khi click
 document.querySelector("table").addEventListener("click", (element) => {
@@ -77,8 +87,8 @@ document.querySelector("table").addEventListener("click", (element) => {
     }
   }
 });
-// *Sửa nhân viên, click vào sẽ hiện form
 
+// *Sửa nhân viên, click vào sẽ hiện form
 document.querySelector("table").addEventListener("click", (element) => {
   if (!element.target.classList.contains("suaButton")) {
     return false;
@@ -99,6 +109,7 @@ document.querySelector("table").addEventListener("click", (element) => {
     }
   }
 });
+
 // *Cập nhật nhân viên
 document.getElementById("btnCapNhat").addEventListener("click", () => {
   let taiKhoanUp = document.getElementById("tknv").value;
@@ -168,4 +179,12 @@ document.getElementById("btnDong").addEventListener("click", () => {
   document.getElementById("btnThemNV").style.display = "block";
   document.getElementById("tknv").disabled = false;
   document.getElementById("formQLNV").reset();
+  document.getElementById("tbTKNV").innerText = "";
+  document.getElementById("tbTen").innerText = "";
+  document.getElementById("tbEmail").innerText = "";
+  document.getElementById("tbMatKhau").innerText = "";
+  document.getElementById("tbNgay").innerText = "";
+  document.getElementById("tbLuongCB").innerText = "";
+  document.getElementById("tbChucVu").innerText = "";
+  document.getElementById("tbGiolam").innerText = "";
 });

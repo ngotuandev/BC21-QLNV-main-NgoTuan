@@ -1,4 +1,4 @@
-let validatorNV = {
+export let validatorNV = {
   kiemTraRong: (string, idErr, message) => {
     let value = string.trim();
 
@@ -18,10 +18,8 @@ let validatorNV = {
     return true;
   },
   kiemTraTaiKhoan: (string, idErr) => {
-    let regex = /^[\w.-]{3,5}[0-9a-zA-Z]$/;
-    let isValid = regex.test(string);
-    if (!isValid) {
-      document.getElementById(idErr).innerText = "Tài khoản từ 4-6 chữ số";
+    if (string * 1 < 1000 || string * 1 > 999999) {
+      document.getElementById(idErr).innerText = "Tài khoản phải từ 4-6 ký số";
       return false;
     }
     return true;

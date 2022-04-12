@@ -1,4 +1,4 @@
-class NhanVien {
+export class NhanVien {
   constructor(tkNV, tenNV, emailNV, mkNV, ngayNV, luongNV, chucVuNV, gioLamNV) {
     this.taiKhoan = tkNV;
     this.ten = tenNV;
@@ -10,7 +10,8 @@ class NhanVien {
     this.gioLam = gioLamNV;
   }
 }
-let thongTinNhanVien = () => {
+
+export let thongTinNhanVien = () => {
   let taiKhoanE = document.getElementById("tknv").value;
   let tenE = document.getElementById("name").value;
   let emailE = document.getElementById("email").value;
@@ -32,7 +33,7 @@ let thongTinNhanVien = () => {
   return nhanVienTuForm;
 };
 
-let renderDanhSachNhanVien = (danhSachNhanVien) => {
+export let renderDanhSachNhanVien = (danhSachNhanVien) => {
   let dsnvHTML = "";
   for (let index of danhSachNhanVien) {
     let nhanVienHienTai = index;
@@ -84,7 +85,7 @@ let renderDanhSachNhanVien = (danhSachNhanVien) => {
   document.getElementById("tableDanhSach").innerHTML = dsnvHTML;
 };
 
-let setLocalNhanVien = (array) => {
+export let setLocalNhanVien = (array) => {
   let json = JSON.stringify(array);
   localStorage.setItem("nhanVienLocal", json);
 };
