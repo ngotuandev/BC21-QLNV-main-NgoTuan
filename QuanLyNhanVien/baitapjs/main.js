@@ -4,6 +4,7 @@ import {
   renderDanhSachNhanVien,
   setLocalNhanVien,
 } from "./danhSachNhanVien.js";
+import { closeButton, onForm, offForm } from "./featureOnOffButton.js";
 import { validatorNV } from "./validation.js";
 
 let danhSachNhanVien = [];
@@ -69,6 +70,7 @@ let btnThem = document
       setLocalNhanVien(danhSachNhanVien);
       document.getElementById("formQLNV").reset();
       document.getElementById("chucvu").selectedIndex = 0;
+      offForm();
     }
   });
 
@@ -106,6 +108,7 @@ document.querySelector("table").addEventListener("click", (element) => {
       document.getElementById("gioLam").value = danhSachNhanVien[i].gioLam;
       document.getElementById("tknv").disabled = true;
       document.getElementById("btnThemNV").style.display = "none";
+      onForm();
     }
   }
 });
@@ -156,6 +159,7 @@ document.getElementById("btnCapNhat").addEventListener("click", () => {
         document.getElementById("formQLNV").reset();
         document.getElementById("tknv").disabled = false;
         document.getElementById("btnThemNV").style.display = "block";
+        offForm();
       }
     }
   }
@@ -175,17 +179,14 @@ document.getElementById("searchName").addEventListener("keyup", (search) => {
   });
 });
 
+// * Button thêm
+document.getElementById("btnThem").addEventListener("click", () => {
+  onForm();
+  closeButton();
+});
+
 // *Button đóng
 document.getElementById("btnDong").addEventListener("click", () => {
-  document.getElementById("btnThemNV").style.display = "block";
-  document.getElementById("tknv").disabled = false;
-  document.getElementById("formQLNV").reset();
-  document.getElementById("tbTKNV").innerText = "";
-  document.getElementById("tbTen").innerText = "";
-  document.getElementById("tbEmail").innerText = "";
-  document.getElementById("tbMatKhau").innerText = "";
-  document.getElementById("tbNgay").innerText = "";
-  document.getElementById("tbLuongCB").innerText = "";
-  document.getElementById("tbChucVu").innerText = "";
-  document.getElementById("tbGiolam").innerText = "";
+  closeButton();
+  offForm();
 });

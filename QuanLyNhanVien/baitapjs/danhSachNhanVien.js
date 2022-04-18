@@ -75,7 +75,7 @@ export let renderDanhSachNhanVien = (danhSachNhanVien) => {
     <td>${chucVuNV(danhSachNhanVien)}</td>
     <td>${tongLuongNV(danhSachNhanVien)}</td>
     <td id="xepLoaiNV">${xepLoaiNV(danhSachNhanVien)}</td>
-    <td class="d-flex"> <button class="btn btn-success mr-1 suaButton" id="suaNhanVien" data-toggle="modal" data-target="#myModal">Sửa</button>
+    <td class="d-flex"> <button class="btn btn-success mr-1 suaButton" id="suaNhanVien">Sửa</button>
                           <button class="btn btn-danger xoaButton" id="xoaNhanVien">Xóa</button> </td>
     
     

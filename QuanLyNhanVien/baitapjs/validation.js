@@ -18,7 +18,9 @@ export let validatorNV = {
     return true;
   },
   kiemTraTaiKhoan: (string, idErr) => {
-    if (string * 1 < 1000 || string * 1 > 999999) {
+    let regex = /^[1-9][0-9]{3,5}$/;
+    let isValid = regex.test(string);
+    if (!isValid) {
       document.getElementById(idErr).innerText = "Tài khoản phải từ 4-6 ký số";
       return false;
     }
